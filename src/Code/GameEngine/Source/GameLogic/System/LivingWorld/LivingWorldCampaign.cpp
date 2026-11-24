@@ -6,9 +6,18 @@
 // Edges: left=unknown-rows right=no-edge-evidence; proof_first=false
 // Hypothesis rules: hypothesis:K, hypothesis:cohesion
 #include "GameLogic/LivingWorldCampaign.h"
+#include "Common/Xfer.h"
 // FUNCTION: BFME2 0x0052BAC1 size=61 name=?AdjustStartingPositionForScenario@LivingWorldCampaign@@QAEHH@Z evidence=N:ledger tier=B hypothesis:K
 
 // FUNCTION: BFME2 0x0052BAFE size=42 name=?xfer@LivingWorldCampaign@@UAEXPAVXfer@@@Z evidence=N:ledger tier=B hypothesis:cohesion
+void LivingWorldCampaign::xfer(Xfer *xfer)
+{
+	if (xfer->IsLightCRC())
+		return;
+
+	xfer->Version1();
+	*xfer == m_unk0x08;
+}
 
 // FUNCTION: BFME2 0x0052BB28 size=12 name=?get@Rva0052BB28DivAvgField@@QBEHXZ evidence=?:placeholder tier=B hypothesis:cohesion
 
